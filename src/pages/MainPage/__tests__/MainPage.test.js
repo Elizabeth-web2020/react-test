@@ -1,6 +1,7 @@
-import { render, screen } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
+import { render, screen, fireEvent } from "@testing-library/react";
+import { BrowserRouter, MemoryRouter, Route, Routes } from "react-router-dom";
 import MainPage from "../MainPage";
+import WelcomePage from "../../WelcomePage/WelcomePage";
 
 it("MainPage should render correctly", () => {
   render(
@@ -20,4 +21,18 @@ it("MainPage should render correctly", () => {
   expect(screen.getAllByRole('button')).toHaveLength(5);
   expect(screen.getAllByRole('line')).toHaveLength(3);
   expect(screen.getAllByRole('card')).toHaveLength(5);
+});
+
+it("back to welcome page", () => {
+  render(
+    <MemoryRouter initialEntries={["/"]}>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/welcome" element={<WelcomePage />} />
+      </Routes>
+    </MemoryRouter>
+  )
+  const backLink = screen.getAllByRole('button')[0];
+  fireEvent.click(backLink);
+  expect(screen.getByText(/welcome page/i)).toBeInTheDocument();
 });
