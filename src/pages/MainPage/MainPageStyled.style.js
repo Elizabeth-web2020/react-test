@@ -88,7 +88,7 @@ export const MainPageStyled = styled.div`
       margin-left: auto;
       margin-right: auto;
       border: 0;
-      border-top: 1px solid #736f72;
+      border-top: 1px dashed #736f72;
 
       @media (max-width: 900px) {
           width: 80px;
