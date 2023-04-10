@@ -29,7 +29,7 @@ const MainPage = () => {
   }
 
   return (
-    <MainPageStyled>
+    <MainPageStyled data-testid="mainPage">
       <Link to="/welcome">
         <button className="back-button"><AiOutlineLeft/> Back</button>
       </Link>
@@ -43,12 +43,12 @@ const MainPage = () => {
               >
               {button.value}
               </button>
-              {button.hr? <hr className="horizontal"/> : null}
+              {button.hr? <hr role='line' className="horizontal"/> : null}
             </Fragment>
           ))}
         </div>
         <div className="content">
-          <p className="content-step"><span>Step 1</span> of 4</p>
+          <p className="content-step"><span>Step {activeButton}</span> of 4</p>
           <h1>What are you creating?</h1>
           <p className="content-text">
             Give us a quick rundown so that community members can find ang join
@@ -56,7 +56,7 @@ const MainPage = () => {
           </p>
           <div className="content-items">
           {activeContent.map((item) => (
-            <div key={item.id} className={`item item-${item.id}`}>
+            <div key={item.id} role='card' className={`item item-${item.id}`}>
               {iconMap[`${item.iconName}`]}
               <div className='item-text'>
                 <h1>{item.title}</h1>

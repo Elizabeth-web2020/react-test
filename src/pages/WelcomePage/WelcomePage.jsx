@@ -5,7 +5,7 @@ import { AiOutlineRight } from 'react-icons/ai';
 
 const WelcomePage = () => {
   return (
-    <WelcomePageStyled>
+    <WelcomePageStyled data-testid="welcomePage">
       <div className='go-button-wrapper'>
       <Link to="/">
         <button className='go-button'>Go <AiOutlineRight /></button>
